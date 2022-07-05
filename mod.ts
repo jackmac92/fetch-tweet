@@ -1,6 +1,9 @@
 import { getTweet } from "https://kamekyame.github.io/twitter_api_client/api_v2/tweets/lookup.ts";
-// import * as moreOfficialApi from "https://raw.githubusercontent.com/PLhery/node-twitter-api-v2/master/src/index.ts";
+const bearerToken = Deno.env.get("TWITTER_BEARER_TOKEN"); // bearerToken
 
-const bearerToken = process.env.TWITTER_BEARER_TOKEN; // bearerToken
+if (!bearerToken) {
+  throw Error("twitter token required");
+}
 
-const res = await getTweet(bearerToken, "1067094924124872705" /*,option*/);
+const res = await getTweet(bearerToken, Deno.args[0]);
+console.log(res);
