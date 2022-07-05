@@ -6,4 +6,4 @@ if (!bearerToken) {
 }
 
 const res = await getTweet(bearerToken, Deno.args[0]);
-console.log(res);
+console.log(JSON.stringify(res));
